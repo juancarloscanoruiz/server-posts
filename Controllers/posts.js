@@ -23,6 +23,8 @@ exports.createPost = async function(req, res){
 
     //Optional Data
     const { postalCode, quantity, location, latitude, longitude, url } = req.body
+    console.table(req.body)
+
 
     if (!title || !shortDescription || !fullDescription || !price) {
         res.status(400).json({
@@ -53,9 +55,10 @@ exports.createPost = async function(req, res){
     } catch (error) {
         res.status(500).json({
             code: 500,
-            success: true,
+            success: false,
             data: error,
         })
+        console.log(error)
     }
 }
 
@@ -150,7 +153,7 @@ exports.updatePost = async function(req, res){
     } catch (error) {
         res.status(500).json({
             code: 500,
-            success: true,
+            success: false,
             data: error,
         })
     }
